@@ -1,6 +1,6 @@
 # inherited_store
 
-A widget that only rebuilds the widgets whom depend on the changed data.
+An inherited widget that holds data and rebuilds the widgets whom depend on the changed data.
 
 This package uses `InharitedModel` as its base.
 
