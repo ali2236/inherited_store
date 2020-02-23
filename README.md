@@ -56,7 +56,29 @@ will be automatically rebuilt.
 ### What exactly gets rebuilt?
 When you call `Store.of(context,'key')` all the widgets that use the current `context`
 will be subscribed to changes for that key.
-If the value for the key changes the widget that uses the subscribed context will be  
+If the value for the key changes the widget that uses the subscribed context will be rebuilt.
+
+In the Example bellow, when the `counter` is modified,
+only the text widget inside the builder gets updated
+because it was subscribed using the `c` context and only decedents of `c` will be rebuilt.
+If instead of calling `Store.of(c,'counter')` we called `Store.of(context,'counter)`,
+when `counter` changes, the entire widget will get rebuilt and the text that shows the time will also update.
+
+```dart
+class StoreText extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Text(DateTime.now().toString()), // show the time which this text widget was built
+        Builder(builder: (c) {
+          return Text(Store.of(c, 'counter').get().toString());
+        }),
+      ],
+    );
+  }
+}
+```
 
 ## Example use cases
 
