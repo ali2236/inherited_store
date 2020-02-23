@@ -10,11 +10,11 @@ abstract class DataStore {
 
 class Store extends StatefulWidget {
   final Widget child;
-  final Map<String, dynamic> settings;
+  final Map<String, dynamic> data;
   final ChangeCallback onValueModified;
 
   const Store(
-      {Key key, this.child, this.settings = const {}, this.onValueModified})
+      {Key key, this.child, this.data = const {}, this.onValueModified})
       : super(key: key);
 
   @override
@@ -26,14 +26,14 @@ class Store extends StatefulWidget {
 }
 
 class _StoreState extends State<Store> {
-  Map<String, dynamic> settings;
+  Map<String, dynamic> data;
   String change;
   ChangeCallback changeCallback;
 
   @override
   void initState() {
     super.initState();
-    settings = widget.settings;
+    data = widget.data;
     changeCallback = widget.onValueModified ?? (a, b) {};
   }
 
@@ -41,12 +41,12 @@ class _StoreState extends State<Store> {
   Widget build(BuildContext context) {
     return InheritedStore(
       child: widget.child,
-      settings: settings,
+      data: data,
       change: change,
       setFunction: (String key, value) {
         setState(() {
           change = key;
-          settings[key] = value;
+          data[key] = value;
           changeCallback(key, value);
         });
       },
@@ -56,14 +56,14 @@ class _StoreState extends State<Store> {
 
 // ignore: must_be_immutable
 class InheritedStore extends InheritedModel<String> implements DataStore {
-  final Map<String, dynamic> settings;
+  final Map<String, dynamic> data;
   final String change;
   final void Function(String key, dynamic value) setFunction;
   String activeKey = '';
 
   InheritedStore({
     Key key,
-    @required this.settings,
+    @required this.data,
     @required this.setFunction,
     @required this.change,
     @required Widget child,
@@ -74,7 +74,7 @@ class InheritedStore extends InheritedModel<String> implements DataStore {
     return context.dependOnInheritedWidgetOfExactType<InheritedStore>();
   }
 
-  T get<T>([T onNullValue]) => settings[activeKey] as T ?? onNullValue;
+  T get<T>([T onNullValue]) => data[activeKey] as T ?? onNullValue;
 
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) => change != null;
@@ -90,5 +90,6 @@ class InheritedStore extends InheritedModel<String> implements DataStore {
   void setKey(String key) => activeKey = key;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.debug}) => jsonEncode(settings);
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.debug}) =>
+      jsonEncode(data);
 }

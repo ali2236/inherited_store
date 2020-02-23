@@ -6,14 +6,14 @@ void main() => runApp(SettingsApp());
 class SettingsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Store(
-        settings: {
-          'counter': 1,
-          'counter2': 1,
-        },
-        child: MainPage(),
+    return Store(
+      data: {
+        'counter': 1,
+        'counter2': 1,
+      },
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: MainPage(),
       ),
     );
   }
@@ -77,11 +77,10 @@ class SettingsDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
         children: InheritedStore.of(context)
-            .settings
+            .data
             .entries
             .map((e) => Text('${e.key} : ${e.value}'))
-            .toList()
-    );
+            .toList());
   }
 }
 

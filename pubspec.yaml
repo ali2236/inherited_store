@@ -1,8 +1,7 @@
 name: inherited_store
 description: A widget that only rebuilds the widgets whom depended on the changed data.
 version: 0.0.1
-author: Ali Ghanabge
-homepage: 
+homepage: https://github.com/ali2236/inherited_store
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
