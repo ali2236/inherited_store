@@ -13,13 +13,15 @@ This package uses `InharitedModel` as its base.
 ### Disadvantages
 
 1. using string for keys is inconvenient
+
     [flutter_store][1] is another package for state management
     that uses abstract store classes in inherited widget to go around this issue.
+    
 2. no computed values
 
 ## Example
 
-`TODO: Demo gif`
+![](example_gif.gif)
 
 The code for the example is in the example tab. 
 
