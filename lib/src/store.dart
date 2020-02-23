@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 
 typedef ChangeCallback = void Function(String key, dynamic value);
@@ -13,8 +12,7 @@ class Store extends StatefulWidget {
   final Map<String, dynamic> data;
   final ChangeCallback onValueModified;
 
-  const Store(
-      {Key key, this.child, this.data = const {}, this.onValueModified})
+  const Store({Key key, this.child, this.data = const {}, this.onValueModified})
       : super(key: key);
 
   @override
@@ -88,8 +86,4 @@ class InheritedStore extends InheritedModel<String> implements DataStore {
   void set(value) => setFunction(activeKey, value);
 
   void setKey(String key) => activeKey = key;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.debug}) =>
-      jsonEncode(data);
 }
