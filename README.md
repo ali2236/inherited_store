@@ -13,7 +13,7 @@ This package uses `InharitedModel` as its base.
 ### Disadvantages
 
 1. using string for keys is inconvenient
-    [flutter_store][https://pub.dev/packages/flutter_store] is another package for state management
+    [flutter_store][1] is another package for state management
     that uses abstract store classes in inherited widget to go around this issue.
 2. no computed values
 
@@ -25,7 +25,7 @@ The code for the example is in the example tab.
 
 ## Getting Started
 
-### Step 1: Wrap your app with your Store
+### Step 1: Wrap your app with Store
 
 ```dart
     Store(
@@ -38,7 +38,7 @@ The code for the example is in the example tab.
     );
 ```
 
-### Step 2: use it
+### Step 2: Use it
 
 ```dart
 class CounterText extends StatelessWidget {
@@ -58,11 +58,11 @@ When you call `Store.of(context,'key')` all the widgets that use the current `co
 will be subscribed to changes for that key.
 If the value for the key changes the widget that uses the subscribed context will be  
 
-## example use cases
+## Example use cases
 
 ### Managing App Preferences
 
 You can use `Inherited_Store` to effectively manage your app preferences.
-Load your preferences into the `data` field of the store then update your
-in storage preferences using the `onValueModified` callback.
+Load your preferences into the `data` field of the store then update the stored preferences using the `onValueModified` callback.
 
+[1]: https://pub.dev/packages/flutter_store
