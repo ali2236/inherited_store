@@ -53,8 +53,8 @@ class _StoreState extends State<Store> {
 }
 
 // ignore: must_be_immutable
-class InheritedStore extends InheritedModel<String> implements DataStore {
-  final Map<String, dynamic> data;
+class InheritedStore extends InheritedModel<dynamic> implements DataStore {
+  final Map<dynamic, dynamic> data;
   final change;
   final ChangeCallback setFunction;
   var activeKey;
@@ -79,7 +79,7 @@ class InheritedStore extends InheritedModel<String> implements DataStore {
 
   @override
   bool updateShouldNotifyDependent(
-          InheritedModel oldWidget, Set<String> dependencies) =>
+          InheritedModel oldWidget, Set<dynamic> dependencies) =>
       dependencies.contains(change);
 
   @override
