@@ -87,8 +87,8 @@ Things that are stored in the data map should only be replaced with the `set` me
   Store(
     data: {
        UnmodifiableListView<Post> : UnmodifiableListView<Post>([]), // using add on a list will not notify subscribers
-       User : User.savedUser, 
-       MyService : MyService,
+       User : User.getSavedUser(), 
+       MyService : MyService(),
        AppTheme : AppTheme(),
        420 : false, // a key can be anything
        'balance' : 12000,
