@@ -1,6 +1,6 @@
 name: inherited_store
 description: An inherited widget that holds data and rebuilds the widgets whom depend on the changed data.
-version: 0.3.2
+version: 0.3.3
 homepage: https://github.com/ali2236/inherited_store
 
 environment:

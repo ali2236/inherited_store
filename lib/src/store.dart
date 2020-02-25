@@ -9,7 +9,7 @@ abstract class DataStore {
 
 class Store extends StatefulWidget {
   final Widget child;
-  final Map<dynamic, dynamic> data;
+  final Map data;
   final ChangeCallback onValueModified;
 
   const Store({Key key, this.child, this.data = const {}, this.onValueModified})
@@ -24,8 +24,8 @@ class Store extends StatefulWidget {
 }
 
 class _StoreState extends State<Store> {
-  Map<dynamic, dynamic> data;
-  String change;
+  Map data;
+  var change;
   ChangeCallback changeCallback;
 
   @override
@@ -53,8 +53,8 @@ class _StoreState extends State<Store> {
 }
 
 // ignore: must_be_immutable
-class InheritedStore extends InheritedModel<dynamic> implements DataStore {
-  final Map<dynamic, dynamic> data;
+class InheritedStore extends InheritedModel implements DataStore {
+  final Map data;
   final change;
   final ChangeCallback setFunction;
   var activeKey;
@@ -79,11 +79,11 @@ class InheritedStore extends InheritedModel<dynamic> implements DataStore {
 
   @override
   bool updateShouldNotifyDependent(
-          InheritedModel oldWidget, Set<dynamic> dependencies) =>
+          InheritedModel oldWidget, Set dependencies) =>
       dependencies.contains(change);
 
   @override
   void set(value) => setFunction(activeKey, value);
 
-  void setKey(String key) => activeKey = key;
+  void setKey(key) => activeKey = key;
 }
