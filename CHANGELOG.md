@@ -1,7 +1,7 @@
 ## [0.4.0]
 
 * added `Store.get(context, key)`
-* added `Store.set(context, ket)`
+* added `Store.set(context, ket, newValue)`
 
 ## [0.3.0]
 
