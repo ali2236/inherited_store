@@ -6,13 +6,14 @@ This package uses `InharitedModel` as its base.
 
 ### Advantages
 
-1. lightweight (less that 100 lines of code)
+1. lightweight (~100 lines of code)
 2. uses flutter's own `InheritedModel` & `InheritedModel` for detecting what needs to be rebuilt.
 3. no boilerplate code 
 
 ### Disadvantages
    
 1. no computed values
+2. using keys is annoying
 
 ## Example
 

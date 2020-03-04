@@ -1,3 +1,8 @@
+## [0.4.0]
+
+* added `Store.get(context, key)`
+* added `Store.set(context, ket)`
+
 ## [0.3.0]
 
 * dynamic keys

@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
 
 typedef ChangeCallback = void Function(dynamic key, dynamic value);
@@ -23,6 +21,18 @@ class Store extends StatefulWidget {
   static DataStore of(BuildContext context, key) =>
       InheritedModel.inheritFrom<InheritedStore>(context, aspect: key)
         ..setKey(key);
+
+  static T get<T>(BuildContext context, key, [defaultValue]) {
+    final store =
+        InheritedModel.inheritFrom<InheritedStore>(context, aspect: key)
+          ..setKey(key);
+    return store.get(defaultValue);
+  }
+
+  static void set(BuildContext context, key, value){
+    InheritedModel.inheritFrom<InheritedStore>(context, aspect: key)
+      ..setKey(key)..set(value);
+  }
 }
 
 class _StoreState extends State<Store> {
