@@ -87,7 +87,7 @@ class SettingsDisplay extends StatelessWidget {
 class StoreText extends StatelessWidget {
   final String storeKey;
 
-  const StoreText({Key key, this.storeKey}) : super(key: key);
+  const StoreText({Key? key, required this.storeKey}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +112,7 @@ class StoreText extends StatelessWidget {
 class Counter extends StatelessWidget {
   final String stKy;
 
-  const Counter({Key key, this.stKy}) : super(key: key);
+  const Counter({Key? key, required this.stKy}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +129,7 @@ class Counter extends StatelessWidget {
               return Text(Store.of(context, stKy).get().toString());
             },
           ),
-          RaisedButton(
+          ElevatedButton(
             child: Text('increment'),
             onPressed: () {
               Store.of(context, stKy).set(Store.of(context, stKy).get() + 1);

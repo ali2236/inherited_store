@@ -1,3 +1,7 @@
+## [1.0.0]
+
+* null-safety
+
 ## [0.4.0]
 
 * added `Store.get(context, key)`
