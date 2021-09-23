@@ -1,3 +1,7 @@
+## [1.1.0]
+
+* major bug fix
+
 ## [1.0.0]
 
 * null-safety

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 typedef ChangeCallback = void Function(dynamic key, dynamic value);
 
 abstract class DataStore {
-  T get<T>([T onNullValue]);
+  T get<T>([T? onNullValue]);
 
   void set(value);
 }
@@ -23,21 +23,25 @@ class Store extends StatefulWidget {
   @override
   _StoreState createState() => _StoreState();
 
-  static DataStore of(BuildContext context, key) =>
-      InheritedModel.inheritFrom<InheritedStore>(context, aspect: key)!
-        ..setKey(key);
+  static DataStore of(BuildContext context, key) {
+    final store =
+        InheritedModel.inheritFrom<InheritedStore>(context, aspect: key)!;
+    store.setKey(key);
+    return store;
+  }
 
   static T get<T>(BuildContext context, key, [defaultValue]) {
     final store =
-        InheritedModel.inheritFrom<InheritedStore>(context, aspect: key)!
-          ..setKey(key);
+        InheritedModel.inheritFrom<InheritedStore>(context, aspect: key)!;
+    store.setKey(key);
     return store.get(defaultValue);
   }
 
   static void set(BuildContext context, key, value) {
-    InheritedModel.inheritFrom<InheritedStore>(context, aspect: key)!
-      ..setKey(key)
-      ..set(value);
+    final store =
+        InheritedModel.inheritFrom<InheritedStore>(context, aspect: key)!;
+    store.setKey(key);
+    store.set(value);
   }
 }
 
@@ -73,7 +77,7 @@ class _StoreState extends State<Store> {
 }
 
 // ignore: must_be_immutable
-class InheritedStore extends InheritedModel<Map> implements DataStore {
+class InheritedStore extends InheritedModel<Object> implements DataStore {
   final Map data;
   final change;
   final ChangeCallback setFunction;
